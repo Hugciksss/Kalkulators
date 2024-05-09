@@ -10,6 +10,15 @@ def btnClick(number):
     e.insert(0,newNumber)#ievieto displejā
     return 0
 
+def btnCommand(command):
+    global number
+    global num1#jāiegaumē skaitlis, darība
+    global mathOp#matemātiskais operators
+    mathOp=command
+    num1=int(e.get())
+    e.delete(0,END)
+    return 0
+
 e=Entry(mansLogs,width=15,bd=10,font=("Arial Black",20),justify="right")
 e.grid(row=0,column=0,columnspan=4)
 
