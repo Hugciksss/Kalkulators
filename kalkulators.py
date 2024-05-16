@@ -2,6 +2,7 @@ from tkinter import*
 
 mansLogs=Tk()
 mansLogs.title('Kalkulators')
+e=Entry(mansLogs,width=15,bd=10,font=("Arial Black",20),justify="right")
 
 def btnClick(number):
     current=e.get()#nolasa skaitli
@@ -13,34 +14,37 @@ def btnClick(number):
 def btnCommand(command):
     global number
     global num1#jāiegaumē skaitlis, darība
+
     global mathOp#matemātiskais operators
     mathOp=command
     num1=int(e.get())
     e.delete(0,END)
     return 0
+
 def notirit():
     e.delete(0,END)
     num1=0
     mathOp=""
     return 0
+
 def Vienads():
     num2=int(e.get())
     result=0
     if mathOp=="+":
         result=num1+num2
     elif mathOp=="-":
-        result=num1-num2
+         result=num1-num2
     elif mathOp=="*":
-        result=num1*num2
+          result=num1*num2
     elif mathOp=="/":
-        result=num1/num2
+          result=num1/num2
     else:
         result=0
-        e.delete(0,END)
-        e.insert(0,str(result))
-        return 0
+    e.delete(0,END)
+    e.insert(0,str(result))
+    return 0
 
-e=Entry(mansLogs,width=15,bd=10,font=("Arial Black",20),justify="right")
+
 e.grid(row=0,column=0,columnspan=4)
 
 btn0=Button(mansLogs,text='0',padx='40',pady='20',command=lambda:btnClick(0))
@@ -59,8 +63,8 @@ btnSask=Button(mansLogs,text='+',padx='40',pady='20',command=lambda:btnCommand("
 btnAtn=Button(mansLogs,text='-',padx='40',pady='20',command=lambda:btnCommand("-"))
 btnReiz=Button(mansLogs,text='*',padx='40',pady='20',command=lambda:btnCommand("*"))
 btnDal=Button(mansLogs,text='/',padx='40',pady='20',command=lambda:btnCommand("/"))
-btnC=Button(mansLogs,text='C',padx='40',pady='20',command=lambda:notirit())
-btnVienads=Button(mansLogs,text='=',padx='40',pady='20',command=lambda:Vienads())
+btnC=Button(mansLogs,text='C',padx='40',pady='20',command=notirit)
+btnVien=Button(mansLogs,text='=',padx='40',pady='20',command=Vienads)
 
 btn7.grid(row=1,column=0)
 btn8.grid(row=1,column=1)
@@ -82,7 +86,7 @@ btnAtn.grid(row=2,column=3)
 btnReiz.grid(row=3,column=3)
 btnDal.grid(row=4,column=3)
 btnC.grid(row=4,column=1)
-btnVienads.grid(row=4,column=2)
+btnVien.grid(row=4,column=2)
 
 
 mansLogs.mainloop()
